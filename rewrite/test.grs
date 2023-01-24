@@ -4,6 +4,18 @@ package correction {
     without { N.lemma = lui }
     commands { N.lemma = lui }
   }
+  
+  # Clément BUON
+  rule corriger_upos_etre {
+  pattern { AUXILIAIRE [lemma="être", upos=AUX] }
+  without {
+      VERBE [upos=VERB];
+      AUXILIAIRE -[comp:aux]-> VERBE;
+  }
+  commands {
+      AUXILIAIRE.upos =  VERB;
+  }
+  }
 }
 
 strat main {
